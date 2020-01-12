@@ -7,16 +7,16 @@ const static = (public = '') => async (ctx, next) => {
 
   const name = join(public, ctx.path)
 
-  if (!existsSync(name)) return await next()
-
-  try {
-    ctx.body = readFileSync(name)
-    ctx.set('Content-Type', mimes[extname(name)] || 'text/plain')
-  } catch (e) {
-    console.error(e)
-  } finally {
-    await next()
+  if (existsSync(name)) {
+    try {
+      ctx.body = readFileSync(name)
+      ctx.set('Content-Type', mimes[extname(name)] || 'text/plain')
+    } catch (e) {
+      console.error(e)
+    }
   }
+  
+  await next()
   
 }
 
