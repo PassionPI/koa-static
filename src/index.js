@@ -5,7 +5,8 @@ const { existsSync, readFileSync } = require('fs')
 
 const static = (public = '') => async (ctx, next) => {
 
-  const name = join(public, ctx.path)
+  const path = ctx.path === '/' ? '/index.html' : ctx.path
+  const name = join(public, path)
 
   if (existsSync(name)) {
     try {
@@ -15,7 +16,7 @@ const static = (public = '') => async (ctx, next) => {
       console.error(e)
     }
   }
-  
+
   await next()
   
 }
