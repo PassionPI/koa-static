@@ -1,11 +1,12 @@
 {
-  "name": "koa-static",
-  "version": "0.0.1",
+  "name": "@passion_pi/koa-static",
+  "version": "0.0.2",
   "main": "index.js",
   "repository": "git@github.com:PassionPI/koa-static.git",
   "author": "PassionPI <472121553@qq.com>",
   "license": "MIT",
   "devDependencies": {
-    "koa": "^2.11.0"
+    "koa": "^2.11.0",
+    "@passion_pi/koa-router": "^0.0.3"
   }
 }
